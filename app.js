@@ -4,11 +4,12 @@ dotenv.config();
 import connectDB from "./database/db.js";
 import cookieParser from "cookie-parser";
 import authRouter from "./routes/auth.routes.js";
-
+import wareHouseRouter from "./routes/warehouse.routes.js";
 const app = express();
 app.use(express.json());
 app.use(cookieParser());
 
+app.use("/api",wareHouseRouter);
 app.use("/api/auth", authRouter);
 app.get("/", (req, res) => {
   res.json({ message: "API IS RUNNING" });
